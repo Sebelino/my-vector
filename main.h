@@ -3,9 +3,9 @@
 class Vector
 {
 public:
-    Vector()
+    Vector() :
+        m_length(0)
     {
-        m_length = 10;
         m_buffer = new long[m_length]; // FIXME: Look up member initialization
         for (int i = 0; i < m_length; ++i) {
             m_buffer[i] = 11 * (i+1);
@@ -27,5 +27,5 @@ public:
 
 private:
     long * m_buffer;
-    long m_length = 0;
+    long m_length;
 };
