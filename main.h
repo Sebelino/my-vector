@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @brief Homebrewn implementation of a vector.
+ */
 class Vector
 {
 public:
