@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
-#include "../main.h"
+//#include "../main.h"
+#include "test.h"
 
-class TestFixture : public ::testing::TestWithParam<std::tuple<int, std::string>> {};
+//class TestFixture : public ::testing::TestWithParam<std::tuple<std::string>> {};
 
 /*
 * @param ({}, "[]")
@@ -9,31 +10,30 @@ class TestFixture : public ::testing::TestWithParam<std::tuple<int, std::string>
 * @param ({77, 3}, "[77, 3]")
 */
 TEST_P(TestFixture, StringRepresentation) {
-    std::string expected = std::get<0>(GetParam());
-    std::string returned = std::get<1>(GetParam());
-    Vector v({}});
-    std::stringstream stream;
-    stream << v;
-    std::string repr = stream.str();
-    ASSERT_EQ(repr, "[]");
+    std::tuple<char*, char*> params = GetParam();
+    //std::string returned = std::get<0>(params);
+    //Vector v({}});
+    //std::stringstream stream;
+    //stream << v;
+    //std::string repr = stream.str();
+    //ASSERT_EQ(repr, "[]");
 }
 
-INSTANTIATE_TEST_CASE_P(VectorTest, TextFixture, ::testing::Values(std::make_tuple("meeny", "meeny"), std::make_tuple("miny", "miny")));
+auto t1 = std::make_tuple("meeny", "eeny");
+auto t2 = std::make_tuple("miny", "iny");
 
-TEST(VectorTest, StringRepresentationEmpty) {
-    Vector v;
-    std::stringstream stream;
-    stream << v;
-    std::string repr = stream.str();
-    ASSERT_EQ(repr, "[]");
-}
+INSTANTIATE_TEST_CASE_P(OtherVectorTest, TestFixture, ::testing::Values(t1, t2));
+
+//TEST(VectorTest, StringRepresentationEmpty) {
+//    Vector v;
+//    std::stringstream stream;
+//    stream << v;
+//    std::string repr = stream.str();
+//    ASSERT_EQ(repr, "[]");
+//}
 
 
 int main(int argc, char **argv) {
-    for(int i = 0; i < 100; ++i) {
-        numbers.push_back(i);
-        strings.push_back("hoy");
-    }
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

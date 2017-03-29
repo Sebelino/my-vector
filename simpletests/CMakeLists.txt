@@ -8,6 +8,6 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 enable_testing()
 
-add_executable(${PROJECT_NAME} "test.cpp")
+add_executable(${PROJECT_NAME} "test.h" "test.cpp")
 
 target_link_libraries(${PROJECT_NAME} gtest)
