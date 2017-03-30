@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
 //#include "../main.h"
-#include "test.h"
 
-//class TestFixture : public ::testing::TestWithParam<std::tuple<std::string>> {};
+class TestFixture : public ::testing::TestWithParam<std::tuple<const char*, const char*>> {};
 
 /*
 * @param ({}, "[]")
