@@ -29,7 +29,7 @@ TEST(VectorTest, StringRepresentationEmpty) {
     std::stringstream stream;
     stream << v;
     std::string repr = stream.str();
-    ASSERT_EQ(repr, "[]");
+    ASSERT_EQ("[]", repr);
 }
 
 
