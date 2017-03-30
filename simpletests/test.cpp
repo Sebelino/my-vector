@@ -20,12 +20,13 @@ TEST_P(TestFixture, StringRepresentation) {
     ASSERT_EQ(expected, repr);
 }
 
-auto t0 = std::make_tuple("[77]", std::make_tuple(1, 77));
-auto t1 = std::make_tuple("[77]", std::make_tuple(1, 77));
-auto t2 = std::make_tuple("[-1213, -1213]", std::make_tuple(2, -1213));
-auto t3 = std::make_tuple("[0, 0, 0]", std::make_tuple(3, 0));
 
-INSTANTIATE_TEST_CASE_P(OtherVectorTest, TestFixture, ::testing::Values(t0, t1, t2, t3));
+INSTANTIATE_TEST_CASE_P(OtherVectorTest, TestFixture, ::testing::Values(
+        std::make_tuple("[77]", std::make_tuple(1, 77)),
+        std::make_tuple("[77]", std::make_tuple(1, 77)),
+        std::make_tuple("[-1213, -1213]", std::make_tuple(2, -1213)),
+        std::make_tuple("[0, 0, 0]", std::make_tuple(3, 0))
+));
 
 TEST(VectorTest, StringRepresentationEmpty) {
     Vector v;
