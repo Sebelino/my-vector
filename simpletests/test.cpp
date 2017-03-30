@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../main.h"
 
-class TestFixture : public ::testing::TestWithParam<std::tuple<const char*, const char*>> {};
+class TestFixture : public ::testing::TestWithParam<std::tuple<std::string, std::tuple<std::size_t, long>>> {};
 
 /*
 * @param ({}, "[]")
@@ -9,20 +9,22 @@ class TestFixture : public ::testing::TestWithParam<std::tuple<const char*, cons
 * @param ({77, 3}, "[77, 3]")
 */
 TEST_P(TestFixture, StringRepresentation) {
-    std::string expected = std::get<0>(GetParam());
-    std::string returned = std::get<1>(GetParam());
-    Vector v(5, 77);
-    std::cout << v << std::endl;
-    //std::stringstream stream;
-    //stream << v;
-    //std::string repr = stream.str();
-    //ASSERT_EQ(repr, "[]");
+    const std::string expected = std::get<0>(GetParam());
+    const std::tuple<std::size_t, long> returned = std::get<1>(GetParam());
+    const std::size_t num = std::get<0>(returned);
+    const long element = std::get<1>(returned);
+    const Vector v(num, element);
+    std::stringstream stream;
+    stream << v;
+    const std::string repr = stream.str();
+    ASSERT_EQ(expected, repr);
 }
 
-auto t1 = std::make_tuple("meeny", "eeny");
-auto t2 = std::make_tuple("miny", "iny");
+auto t1 = std::make_tuple("[77]", std::make_tuple(1, 77));
+auto t2 = std::make_tuple("[-1213, -1213]", std::make_tuple(2, -1213));
+auto t3 = std::make_tuple("[0, 0, 0]", std::make_tuple(3, 0));
 
-INSTANTIATE_TEST_CASE_P(OtherVectorTest, TestFixture, ::testing::Values(t1, t2));
+INSTANTIATE_TEST_CASE_P(OtherVectorTest, TestFixture, ::testing::Values(t1, t2, t3));
 
 TEST(VectorTest, StringRepresentationEmpty) {
     Vector v;
