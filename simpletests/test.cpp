@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-//#include "../main.h"
+#include "../main.h"
 
 class TestFixture : public ::testing::TestWithParam<std::tuple<const char*, const char*>> {};
 
@@ -23,13 +23,13 @@ auto t2 = std::make_tuple("miny", "iny");
 
 INSTANTIATE_TEST_CASE_P(OtherVectorTest, TestFixture, ::testing::Values(t1, t2));
 
-//TEST(VectorTest, StringRepresentationEmpty) {
-//    Vector v;
-//    std::stringstream stream;
-//    stream << v;
-//    std::string repr = stream.str();
-//    ASSERT_EQ(repr, "[]");
-//}
+TEST(VectorTest, StringRepresentationEmpty) {
+    Vector v;
+    std::stringstream stream;
+    stream << v;
+    std::string repr = stream.str();
+    ASSERT_EQ(repr, "[]");
+}
 
 
 int main(int argc, char **argv) {
