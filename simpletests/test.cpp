@@ -9,9 +9,10 @@ class TestFixture : public ::testing::TestWithParam<std::tuple<const char*, cons
 * @param ({77, 3}, "[77, 3]")
 */
 TEST_P(TestFixture, StringRepresentation) {
-    std::tuple<const char*, const char*> params = GetParam();
-    //std::string returned = std::get<0>(params);
-    //Vector v({}});
+    std::string expected = std::get<0>(GetParam());
+    std::string returned = std::get<1>(GetParam());
+    Vector v(5, 77);
+    std::cout << v << std::endl;
     //std::stringstream stream;
     //stream << v;
     //std::string repr = stream.str();
