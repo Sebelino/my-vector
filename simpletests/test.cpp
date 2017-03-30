@@ -10,7 +10,7 @@
 * @param ({77, 3}, "[77, 3]")
 */
 TEST_P(TestFixture, StringRepresentation) {
-    std::tuple<char*, char*> params = GetParam();
+    std::tuple<const char*, const char*> params = GetParam();
     //std::string returned = std::get<0>(params);
     //Vector v({}});
     //std::stringstream stream;
