@@ -3,11 +3,7 @@
 
 class TestFixture : public ::testing::TestWithParam<std::tuple<std::string, std::tuple<std::size_t, long>>> {};
 
-/*
-* @param ({}, "[]")
-* @param ({77}, "[77]")
-* @param ({77, 3}, "[77, 3]")
-*/
+
 TEST_P(TestFixture, StringRepresentation) {
     const std::string expected = std::get<0>(GetParam());
     const std::tuple<std::size_t, long> returned = std::get<1>(GetParam());
