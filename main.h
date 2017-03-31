@@ -11,7 +11,7 @@ class Vector {
     m_buffer = new long[m_length];  // FIXME: Look up member initialization
   }
 
-  Vector(std::size_t num, const long element) : m_length(num) {
+  Vector(const long num, const long element) : m_length(num) {
     m_buffer = new long[m_length];
     std::fill(m_buffer, m_buffer + num, element);
   }

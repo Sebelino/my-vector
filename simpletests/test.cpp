@@ -1,14 +1,13 @@
 #include <gtest/gtest.h>
 #include "../main.h"
 
-class TestFixture
-    : public ::testing::TestWithParam<
-          std::tuple<std::string, std::tuple<std::size_t, long>>> {};
+class TestFixture : public ::testing::TestWithParam<
+                        std::tuple<std::string, std::tuple<long, long>>> {};
 
 TEST_P(TestFixture, StringRepresentation) {
   const std::string expected = std::get<0>(GetParam());
-  const std::tuple<std::size_t, long> returned = std::get<1>(GetParam());
-  const std::size_t num = std::get<0>(returned);
+  const std::tuple<long, long> returned = std::get<1>(GetParam());
+  const long num = std::get<0>(returned);
   const long element = std::get<1>(returned);
   const Vector v(num, element);
   std::stringstream stream;
