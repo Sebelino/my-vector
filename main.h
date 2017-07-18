@@ -11,7 +11,7 @@ class Vector {
     m_buffer = new long[m_length];  // FIXME: Look up member initialization
   }
 
-  Vector(const long num, const long element) : m_length(num) {
+  Vector(const std::size_t num, const long element) : m_length(num) {
     m_buffer = new long[m_length];
     std::fill(m_buffer, m_buffer + num, element);
   }
@@ -21,7 +21,7 @@ class Vector {
     if (v.m_length >= 1) {
       stream << v.m_buffer[0];
     }
-    for (int i = 1; i < v.m_length; ++i) {
+    for (std::size_t i = 1; i < v.m_length; ++i) {
       stream << ", " << v.m_buffer[i];
     }
     stream << "]";
@@ -30,5 +30,5 @@ class Vector {
 
  private:
   long* m_buffer;
-  long m_length;
+  std::size_t m_length;
 };
