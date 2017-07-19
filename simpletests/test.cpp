@@ -17,20 +17,12 @@ TEST_P(TestFixture, StringRepresentation) {
 }
 
 INSTANTIATE_TEST_CASE_P(
-    OtherVectorTest, TestFixture,
-    ::testing::Values(std::make_tuple("[77]", std::make_tuple(1, 77)),
+    VectorTest, TestFixture,
+    ::testing::Values(std::make_tuple("[]", std::make_tuple(0, 108)),
                       std::make_tuple("[77]", std::make_tuple(1, 77)),
-                      std::make_tuple("[-1213, -1213]",
-                                      std::make_tuple(2, -1213)),
+                      std::make_tuple("[77]", std::make_tuple(1, 77)),
+                      std::make_tuple("[-1213, -1213]", std::make_tuple(2, -1213)),
                       std::make_tuple("[0, 0, 0]", std::make_tuple(3, 0))));
-
-TEST(VectorTest, StringRepresentationEmpty) {
-  Vector v;
-  std::stringstream stream;
-  stream << v;
-  std::string repr = stream.str();
-  ASSERT_EQ("[]", repr);
-}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
