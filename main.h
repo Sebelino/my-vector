@@ -11,6 +11,11 @@ class Vector {
     m_buffer = new long[m_length];  // FIXME: Look up member initialization
   }
 
+  /**
+   * @brief Initializes a Vector of num elements where each element equals element.
+   * @param num
+   * @param element
+   */
   Vector(const std::size_t num, const long element) : m_length(num) {
     m_buffer = new long[m_length];
     std::fill(m_buffer, m_buffer + num, element);
